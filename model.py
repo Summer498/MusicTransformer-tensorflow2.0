@@ -2,7 +2,7 @@ from custom.layers import *
 from custom.callback import *
 import params as par
 import sys
-from tensorflow.python import keras
+from tensorflow_core import keras
 import json
 import tensorflow_probability as tfp
 import random

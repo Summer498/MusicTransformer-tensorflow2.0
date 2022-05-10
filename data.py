@@ -1,7 +1,7 @@
 import utils
 import random
 import pickle
-from tensorflow.python import keras
+from tensorflow_core import keras
 import numpy as np
 import params as par
 

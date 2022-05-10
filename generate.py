@@ -2,7 +2,7 @@ from model import MusicTransformer, MusicTransformerDecoder
 from custom.layers import *
 from custom import callback
 import params as par
-from tensorflow.python.keras.optimizer_v2.adam import Adam
+from tensorflow_core.python.keras.optimizer_v2.adam import Adam
 from data import Data
 import utils
 import datetime
