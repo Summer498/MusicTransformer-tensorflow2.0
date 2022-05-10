@@ -1,6 +1,10 @@
 #!/bin/bash
+
 [ ! "$1" ] && echo 'Error: please specify output dir' && exit
+
 dir=$1
+
+mkdir -p $dir
 for url in $(curl -s https://thwiki.cc/%E5%88%86%E7%B1%BB:%E5%AE%98%E6%96%B9MIDI \
     | egrep -o '[^"]+?\.mid' \
     | egrep '^/' \

@@ -1,6 +1,7 @@
 #!/bin/bash
 # Scraper for Yamaha e-Piano Competition dataset
 [ ! "$1" ] && echo 'Error: please specify output dir' && exit
+
 dir=$1
 pages='https://www.piano-e-competition.com/midi_2002.asp
 https://www.piano-e-competition.com/midi_2004.asp
