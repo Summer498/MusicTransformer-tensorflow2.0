@@ -38,8 +38,12 @@ def preprocess_midi_files_under(midi_root, save_dir):
         except EOFError:
             print('EOF Error')
 
-        with open('{}/{}.pickle'.format(save_dir,path.split('/')[-1]), 'wb') as f:
-            pickle.dump(data, f)
+        if os.name == 'nt':
+            with open('{}\\{}.pickle'.format(save_dir,path.split('\\')[-1]), 'wb') as f:
+                pickle.dump(data, f)
+        else:
+            with open('{}/{}.pickle'.format(save_dir,path.split('/')[-1]), 'wb') as f:
+                pickle.dump(data, f)
 
 
 # def _augumentation(seq):
