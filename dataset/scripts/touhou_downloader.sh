@@ -5,18 +5,19 @@
 dir=$1
 
 mkdir -p $dir
-for url in $(curl -s https://thwiki.cc/%E5%88%86%E7%B1%BB:%E5%AE%98%E6%96%B9MIDI \
+for url in $(curl https://thwiki.cc/%E5%88%86%E7%B1%BB:%E5%AE%98%E6%96%B9MIDI \
     | egrep -o '[^"]+?\.mid' \
     | egrep '^/' \
     | sed 's/^/https:\/\/thwiki.cc/g' \
     | uniq);
-do url=$(curl -s "$url" \
+    #TODO: url2 を作るところでおかしくなっている
+do url2=$(curl "$url" \
     | egrep -o '[^"]+?\.mid' \
     | egrep '^/' \
     | grep -v '%' \
     | sed 's/^/https:/g' \
     | uniq);
-echo $url | tee /dev/stderr
+echo $url2 | tee /dev/stderr
 done | uniq | wget -P $dir -i -
 cd $dir
 ls | egrep -i -v '\.mid$' | xargs rm
