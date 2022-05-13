@@ -8,6 +8,7 @@ import tensorflow_probability as tfp
 import random
 import utils
 from progress.bar import Bar
+from tensorflow.python.keras.optimizer_v2.adam import Adam
 tf.executing_eagerly()
 
 
@@ -335,6 +336,7 @@ class MusicTransformerDecoder(keras.Model):
             self.loss_value = self.loss(out_tar, predictions)
         gradients = tape.gradient(self.loss_value, self.trainable_variables)
         self.grad = gradients
+        self.optimizer = Adam(0.0001)
         self.optimizer.apply_gradients(zip(gradients, self.trainable_variables))
 
         return predictions

@@ -11,6 +11,16 @@ import sys
 
 tf.executing_eagerly()
 
+# GPU memory limitation
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+if len(physical_devices) > 0:
+    for device in physical_devices:
+        tf.config.experimental.set_memory_growth(device, True)
+        print('memory growth:', tf.config.experimental.get_memory_growth(device))
+else:
+    print("Not enough GPU hardware devices available")
+
+
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--l_r', default=None, help='학습률', type=float)
